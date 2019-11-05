@@ -100,6 +100,7 @@
             // 
             // navBar_panel
             // 
+            this.navBar_panel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.navBar_panel.Controls.Add(this.pictureBox1);
             this.navBar_panel.Controls.Add(this.label3);
             this.navBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -109,6 +110,8 @@
             this.navBar_panel.Size = new System.Drawing.Size(798, 40);
             this.navBar_panel.TabIndex = 0;
             this.navBar_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.navBar_panel_MouseDown);
+            this.navBar_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.navBar_panel_MouseMove);
+            this.navBar_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.navBar_panel_MouseUp);
             // 
             // pictureBox1
             // 
@@ -124,8 +127,8 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(11, 8);

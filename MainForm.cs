@@ -26,15 +26,33 @@ namespace EditX
         }
 
 
-        Point lastPoint;
+        private bool mouseDown;
+        private Point lastLocation;
         private void navBar_panel_MouseDown(object sender, MouseEventArgs e)
         {
-            lastPoint = new Point(e.X, e.Y);
+            mouseDown = true;
+            lastLocation = e.Location;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void navBar_panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void navBar_panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }
