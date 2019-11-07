@@ -38,15 +38,19 @@
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.workspace_panel = new System.Windows.Forms.Panel();
             this.controls_panel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.posY = new System.Windows.Forms.TextBox();
+            this.posX = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            this.workspace_panel.SuspendLayout();
+            this.controls_panel.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,7 +154,6 @@
             // workspace_panel
             // 
             this.workspace_panel.BackColor = System.Drawing.Color.Gainsboro;
-            this.workspace_panel.Controls.Add(this.panel1);
             this.workspace_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.workspace_panel.Location = new System.Drawing.Point(50, 0);
             this.workspace_panel.Margin = new System.Windows.Forms.Padding(0);
@@ -160,12 +163,58 @@
             // 
             // controls_panel
             // 
+            this.controls_panel.Controls.Add(this.label3);
+            this.controls_panel.Controls.Add(this.label2);
+            this.controls_panel.Controls.Add(this.posY);
+            this.controls_panel.Controls.Add(this.posX);
+            this.controls_panel.Controls.Add(this.label1);
             this.controls_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controls_panel.Location = new System.Drawing.Point(962, 0);
             this.controls_panel.Margin = new System.Windows.Forms.Padding(0);
             this.controls_panel.Name = "controls_panel";
             this.controls_panel.Size = new System.Drawing.Size(300, 670);
             this.controls_panel.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(147, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Y";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "X";
+            // 
+            // posY
+            // 
+            this.posY.Location = new System.Drawing.Point(147, 64);
+            this.posY.Name = "posY";
+            this.posY.Size = new System.Drawing.Size(100, 22);
+            this.posY.TabIndex = 2;
+            // 
+            // posX
+            // 
+            this.posX.Location = new System.Drawing.Point(14, 64);
+            this.posX.Name = "posX";
+            this.posX.Size = new System.Drawing.Size(100, 22);
+            this.posX.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Location";
             // 
             // toolStrip1
             // 
@@ -215,15 +264,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(128, 37);
             this.toolStripButton3.Text = "Choose Template";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(333, 213);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(204, 168);
-            this.panel1.TabIndex = 0;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // Dashboard
             // 
@@ -236,13 +277,15 @@
             this.Text = "EditX";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Dashboard_KeyUp);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            this.workspace_panel.ResumeLayout(false);
+            this.controls_panel.ResumeLayout(false);
+            this.controls_panel.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -264,6 +307,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.Panel workspace_panel;
         private System.Windows.Forms.Panel controls_panel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox posY;
+        private System.Windows.Forms.TextBox posX;
+        private System.Windows.Forms.Label label1;
     }
 }
