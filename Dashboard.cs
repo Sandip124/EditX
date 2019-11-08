@@ -19,6 +19,25 @@ namespace EditX
 
         int positionX = 0;
         int positionY = 0;
+        float zoom = 1;
+
+        private enum Tool
+        {
+            POINTER,
+            RECTANGLE,
+            TEXT,
+            ARTBOARD,
+        };
+
+        private Tool currentTool;
+
+        private enum Panels
+        {
+            WORKSPACE_PANEL,
+            TOOLBAR_PANEL,
+            ACTIONBAR_PANEL,
+            NAVIGATIONBAR_PANEL
+        }
 
         public Dashboard(string canvas_name, int width, int height)
         {
@@ -30,16 +49,21 @@ namespace EditX
             Graphics g = this.CreateGraphics();
 
             // Fit width
+            centerArtBoard();
+
+        }
+
+        private void centerArtBoard()
+        {
             var position = getFitLocation(this.canvas_width, this.canvas_height, workspace_panel.Width, workspace_panel.Height);
             updateLocation(position);
-
         }
 
         private Point getFitLocation(int canvasWidth, int canvasHeight, int workSpaceWidth, int workspaceHeight)
         {
             int posX = (int)((workSpaceWidth / 2) - (canvasWidth / 2));
             int posY = (int)((workspaceHeight / 2) - (canvasHeight / 2));
-            return new Point(posX,posY);
+            return new Point(posX, posY);
         }
 
         private string canvas_name { get; set; } = "";
@@ -47,7 +71,7 @@ namespace EditX
         private int canvas_height { get; set; } = 0;
 
 
-        private void createArtboard(string canvas_name,int canvas_width, int canvas_height)
+        private void createArtboard(string canvas_name, int canvas_width, int canvas_height)
         {
             Panel canvas = new Panel();
             this.SuspendLayout();
@@ -89,20 +113,20 @@ namespace EditX
         private void CanvasMouseUp(object sender, MouseEventArgs e)
         {
             mouseDownAction = false;
-        } 
+        }
         #endregion
 
         private void addCanvasToWorkSpace(Panel canvas)
         {
             Panel workspace = ControlHelper.findPanel(this, WORKSPACE);
             workspace.Controls.Clear();
-            workspace.AutoScroll =true;
+            //workspace.AutoScroll =true;
             workspace.Controls.Add(canvas);
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            createArtboard(canvas_name,canvas_width, canvas_height);
+            createArtboard(canvas_name, canvas_width, canvas_height);
         }
 
         private void updateLocation(Point location)
@@ -117,11 +141,20 @@ namespace EditX
 
         private void Dashboard_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.Control && e.KeyValue == 0)
+            if (e.Control && e.KeyCode == Keys.D0)
             {
-                //fit the canvas in screen
-
+                //center the canvas in screen
+                centerArtBoard();
+                updateCanvas();
             }
+        }
+
+        private void updateCanvas()
+        {
+            var canvas = ControlHelper.findPanel(this, canvas_name);
+            canvas.Location = new Point(positionX, positionY);
+            canvas.Update();
+            controls_panel.Refresh();
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -130,5 +163,91 @@ namespace EditX
             ChooseTemplate chooseTemplate = new ChooseTemplate();
             chooseTemplate.Show();
         }
+
+        bool onMouseWheel = false;
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            onMouseWheel = true;
+            if (onMouseWheel && Control.ModifierKeys == Keys.Shift)
+            {
+                float oldzoom = zoom;
+
+                if (e.Delta > 0)
+                {
+                    zoom += 0.1F;
+                }
+
+                else if (e.Delta < 0)
+                {
+                    zoom = Math.Max(zoom - 0.1F, 0.01F);
+                }
+
+                MouseEventArgs mouse = e as MouseEventArgs;
+                Point mousePosNow = mouse.Location;
+
+                int x = mousePosNow.X - workspace_panel.Location.X;    // Where location of the mouse in the pictureframe
+                int y = mousePosNow.Y - workspace_panel.Location.Y;
+
+                int oldimagex = (int)(x / oldzoom);  // Where in the IMAGE is it now
+                int oldimagey = (int)(y / oldzoom);
+
+                int newimagex = (int)(x / zoom);     // Where in the IMAGE will it be when the new zoom i made
+                int newimagey = (int)(y / zoom);
+
+                positionX = newimagex - oldimagex + positionX;  // Where to move image to keep focus on one point
+                positionY = newimagey - oldimagey + positionY;
+
+                workspace_panel.Refresh();  // calls imageBox_Paint
+                updateCanvas();
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            setCurrentTool(Tool.POINTER);
+            this.Cursor = Cursors.Default;
+            if (currentTool == Tool.POINTER)
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            setCurrentTool(Tool.RECTANGLE);
+            this.Cursor = Cursors.Default;
+            if (currentTool == Tool.RECTANGLE)
+            {
+                this.Cursor = Cursors.Cross;
+            }
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            setCurrentTool(Tool.TEXT);
+            this.Cursor = Cursors.Default;
+            if (currentTool == Tool.TEXT)
+            {
+                this.Cursor = Cursors.IBeam;
+            }
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            setCurrentTool(Tool.ARTBOARD);
+            this.Cursor = Cursors.Default;
+            if (currentTool == Tool.ARTBOARD)
+            {
+                this.Cursor = Cursors.Arrow;            
+            }
+        }
+
+
+        private void setCurrentTool(Tool tool)
+        {
+            this.currentTool = tool;
+        }
     }
+
 }

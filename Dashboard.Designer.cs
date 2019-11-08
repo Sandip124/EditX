@@ -117,6 +117,7 @@
             this.toolStripButton1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.toolStripButton1.Size = new System.Drawing.Size(48, 44);
             this.toolStripButton1.Text = "Pointer";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton4
             // 
@@ -128,6 +129,7 @@
             this.toolStripButton4.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.toolStripButton4.Size = new System.Drawing.Size(48, 44);
             this.toolStripButton4.Text = "rectangle";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton5
             // 
@@ -139,6 +141,7 @@
             this.toolStripButton5.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.toolStripButton5.Size = new System.Drawing.Size(48, 44);
             this.toolStripButton5.Text = "Text";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripButton6
             // 
@@ -150,6 +153,7 @@
             this.toolStripButton6.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.toolStripButton6.Size = new System.Drawing.Size(48, 44);
             this.toolStripButton6.Text = "artboard";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // workspace_panel
             // 
@@ -272,6 +276,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditX";
