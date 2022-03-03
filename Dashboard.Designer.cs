@@ -96,10 +96,10 @@
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton6});
+            this.toolStripButton6,
+            this.toolStripButton1});
             this.toolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
@@ -184,7 +184,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(147, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 17);
+            this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Y";
             // 
@@ -193,7 +193,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 17);
+            this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
             // 
@@ -201,14 +201,14 @@
             // 
             this.posY.Location = new System.Drawing.Point(147, 64);
             this.posY.Name = "posY";
-            this.posY.Size = new System.Drawing.Size(100, 22);
+            this.posY.Size = new System.Drawing.Size(100, 20);
             this.posY.TabIndex = 2;
             // 
             // posX
             // 
             this.posX.Location = new System.Drawing.Point(14, 64);
             this.posX.Name = "posX";
-            this.posX.Size = new System.Drawing.Size(100, 22);
+            this.posX.Size = new System.Drawing.Size(100, 20);
             this.posX.TabIndex = 1;
             // 
             // label1
@@ -216,7 +216,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Location";
             // 
@@ -243,7 +243,7 @@
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripLabel1.Size = new System.Drawing.Size(64, 40);
+            this.toolStripLabel1.Size = new System.Drawing.Size(54, 40);
             this.toolStripLabel1.Text = "EditX";
             // 
             // toolStripButton2
@@ -266,7 +266,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(128, 37);
+            this.toolStripButton3.Size = new System.Drawing.Size(102, 37);
             this.toolStripButton3.Text = "Choose Template";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 

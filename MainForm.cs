@@ -21,7 +21,7 @@ namespace EditX
         private void newProject_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChooseTemplate chooseTemplate= new ChooseTemplate();
+            Dashboard chooseTemplate = new Dashboard();
             chooseTemplate.Show();
         }
 
